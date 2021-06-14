@@ -1,0 +1,21 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com/
+
+releases:
+  - name: demo
+    namespace: demo
+    chart: ../hello-helm/k8s/demo
+    values:
+      - "../hello-helm/k8s/demo/production-values.yaml"
+
+  - name: kube-state-metrics
+    namespace: kube-state-metrics
+    chart: stable/kube-state-metrics
+
+  - name: prometheus
+    namespace: prometheus
+    chart: stable/prometheus
+    set:
+      - name: rbac.create
+        value: true
